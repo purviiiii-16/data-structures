@@ -1,0 +1,35 @@
+ #include <stdio.h>
+
+struct student {
+    int usn;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct student s;
+
+    // Taking input from the user
+    printf("Enter Student Details:\n");
+
+    printf("Enter USN: ");
+    scanf("%d", &s.usn);
+
+    // Clear the input buffer before reading a string with spaces
+    while (getchar() != '\n');
+
+    printf("Enter Name: ");
+    // fgets is used to read names containing spaces safely
+    fgets(s.name, sizeof(s.name), stdin);
+
+    printf("Enter Marks: ");
+    scanf("%f", &s.marks);
+
+    // Displaying the student details
+    printf("\n--- Displaying Student Information ---\n");
+    printf("USN: %d\n", s.usn);
+    printf("Name: %s", s.name); // fgets includes the newline character
+    printf("Marks: %.2f\n", s.marks);
+
+    return 0;
+}
